@@ -68,12 +68,14 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="packages.config" />
+    <Content Include="Login.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="WebPage.Master" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -86,7 +88,19 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Login.Master.cs">
+      <DependentUpon>Login.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Login.Master.designer.cs">
+      <DependentUpon>Login.Master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebPage.Master.cs">
+      <DependentUpon>WebPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage.Master.designer.cs">
+      <DependentUpon>WebPage.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
