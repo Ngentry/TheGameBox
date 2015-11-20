@@ -31,22 +31,22 @@ namespace TheGameBox {
         protected global::System.Web.UI.WebControls.Calendar Calendar1;
         
         /// <summary>
-        /// Button1 control.
+        /// AddEventBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button AddEventBtn;
         
         /// <summary>
-        /// Button2 control.
+        /// RemoveEventBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button RemoveEventBtn;
         
         /// <summary>
         /// TextBox1 control.

@@ -14,8 +14,8 @@
                         <TitleStyle BackColor="#333399" BorderStyle="Solid" Font-Bold="True" Font-Size="12pt" ForeColor="White" Height="12pt" />
                         <TodayDayStyle BackColor="#999999" ForeColor="White" />
                     </asp:Calendar>
-                    <asp:Button ID="Button1" runat="server" Text="Add Event" />
-                    <asp:Button ID="Button2" runat="server" Text="Remove Event" />
+                    <asp:Button ID="AddEventBtn" runat="server" Text="Add Event" />
+                    <asp:Button ID="RemoveEventBtn" runat="server" Text="Remove Event" />
 
                 </td>
 
