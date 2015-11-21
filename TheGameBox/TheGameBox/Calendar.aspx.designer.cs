@@ -85,49 +85,49 @@ namespace TheGameBox {
         protected global::System.Web.UI.WebControls.Panel AddEventPanel;
         
         /// <summary>
-        /// TextBox2 control.
+        /// EventDateTxtBx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox EventDateTxtBx;
         
         /// <summary>
-        /// TextBox4 control.
+        /// EventNameTxtBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox EventNameTxtBox;
         
         /// <summary>
-        /// TextBox3 control.
+        /// EventDescriptionTxtBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox EventDescriptionTxtBox;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// TimeStartDrpList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList TimeStartDrpList;
         
         /// <summary>
-        /// DropDownList2 control.
+        /// TimeEndDrpList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.DropDownList TimeEndDrpList;
         
         /// <summary>
         /// AddEventFinalBtn control.
@@ -157,22 +157,22 @@ namespace TheGameBox {
         protected global::System.Web.UI.WebControls.Panel RemoveEventPanel;
         
         /// <summary>
-        /// DropDownList3 control.
+        /// RemoveEventDrpDwn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::System.Web.UI.WebControls.DropDownList RemoveEventDrpDwn;
         
         /// <summary>
-        /// TextBox5 control.
+        /// RemoveInfoTxtBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox RemoveInfoTxtBox;
         
         /// <summary>
         /// FinalRemoveEventBtn control.
