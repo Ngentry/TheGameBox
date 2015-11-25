@@ -176,7 +176,6 @@
     </None>
     <Content Include="Calendar.aspx" />
     <Content Include="LoginPage.aspx" />
-    <Content Include="NewLogin.aspx" />
     <Content Include="Admin_Home.aspx" />
     <Content Include="User_Control.aspx" />
     <Content Include="Admin_Control.aspx" />
@@ -224,12 +223,6 @@
     </Compile>
     <Compile Include="LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="NewLogin.aspx.cs">
-      <DependentUpon>NewLogin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="NewLogin.aspx.designer.cs">
-      <DependentUpon>NewLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminPage.Master.cs">
       <DependentUpon>AdminPage.Master</DependentUpon>
