@@ -202,7 +202,7 @@
               	  <h5 class="centered"></h5>
               	  	
                   <li class="mt">
-                      <a href="index.html">
+                      <a href="dummyWelcome.aspx">
                           <i class="fa fa-dashboard"></i>
                           <span>Profile</span>
                       </a>

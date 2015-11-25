@@ -1924,18 +1924,7 @@ label {
 
 
 /*LOGIN CONFIGURATION PAGE*/
-.form-login {
-	max-width: 330px;
-	margin: 100px auto 0;
-	background: #fff;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-}
-
-.form-login h2.form-login-heading {
-	margin: 0;
-	padding: 25px 20px;
-	text-align: center;
+ign: center;
 	background: #68dff0;
 	border-radius: 5px 5px 0 0;
 	-webkit-border-radius: 5px 5px 0 0;
@@ -1950,6 +1939,35 @@ label {
 .login-wrap .registration {
 	text-align: center;
 }
+;
+	text-transform: uppercase;
+	font-weight: 300;
+}
+.login-wrap {
+	padding: 20px;
+}
+.login-wrap .registration {
+	text-align: center;
+}
+.login-social-link {
+	display: block;
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
+
+
+/*LOCK SCREEN CONF*/
+#showtime {
+	width: 100%;
+	color: #fff;
+	font-size: 90px;
+	margin-bottom: 30px;
+	margin-top: 250px;
+	display: inline-block;
+	text-align: center;
+	font-weight: 400;
+}
+
 .login-social-link {
 	display: block;
 	margin-top: 20px;
