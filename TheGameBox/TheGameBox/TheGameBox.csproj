@@ -176,8 +176,9 @@
     </None>
     <Content Include="Calendar.aspx" />
     <Content Include="LoginPage.aspx" />
-    <Content Include="NewLogin.aspx" />
     <Content Include="Admin_Home.aspx" />
+    <Content Include="Register.aspx" />
+    <Content Include="Verify.aspx" />
     <Content Include="User_Control.aspx" />
     <Content Include="Admin_Control.aspx" />
     <Content Include="Group_Control.aspx" />
@@ -225,12 +226,6 @@
     <Compile Include="LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="NewLogin.aspx.cs">
-      <DependentUpon>NewLogin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="NewLogin.aspx.designer.cs">
-      <DependentUpon>NewLogin.aspx</DependentUpon>
-    </Compile>
     <Compile Include="AdminPage.Master.cs">
       <DependentUpon>AdminPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -244,6 +239,20 @@
     </Compile>
     <Compile Include="Admin_Home.aspx.designer.cs">
       <DependentUpon>Admin_Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Verify.aspx.cs">
+      <DependentUpon>Verify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Verify.aspx.designer.cs">
+      <DependentUpon>Verify.aspx</DependentUpon>
     </Compile>
     <Compile Include="User_Control.aspx.cs">
       <DependentUpon>User_Control.aspx</DependentUpon>

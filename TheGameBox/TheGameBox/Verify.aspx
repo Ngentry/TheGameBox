@@ -1,6 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="TheGameBox.WebForm3" %>
-
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Verify.aspx.cs" Inherits="TheGameBox.Registration" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,9 +25,16 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+      <style type="text/css">
+          .auto-style1 {
+              height: 22px;
+          }
+      </style>
   </head>
 
   <body>
+
+      <form id="form1" runat="server">
 
       <!-- **********************************************************************************************************************************************************
       MAIN CONTENT
@@ -37,44 +42,44 @@
 
 	  <div>
 	  	<div style="color: #ffffff;">
-	  	
-		      <form id="form1" runat="server">
-		        <h2>Sign into The Game Box</h2>
-		        <div class="login-wrap">
-		            <table style="width:50%;">
-                        <tr>
-                            <td>
-                                USER NAME:
-                                <asp:TextBox ID="UserNameTxtBox" runat="server" Width="243px" ForeColor="Black"></asp:TextBox>
-                                <asp:Label ID="failLbl" runat="server" ForeColor="Red" Text="Label"></asp:Label>
+
+              <table style="width: 100%;">
+                  <tr>
+                      <td><h1>Registration</h1></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                      <td>SCREEN NAME:
+                          <asp:TextBox ID="userNameTxtBx" runat="server" Width="205px" ForeColor="Black"></asp:TextBox>
+                          <asp:Label ID="ErrorLbl" runat="server" ForeColor="Red" Text="Label"></asp:Label>
+                      </td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                      <td class="auto-style1">EMAIL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <asp:TextBox ID="emailTxtBx" runat="server" TextMode="Email" Width="205px" ForeColor="Black"></asp:TextBox>
+                      </td>
+                      <td class="auto-style1"></td>
+                      <td class="auto-style1"></td>
+                  </tr>
+                  <tr>
+                      <td class="auto-style1">
+                          <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TheGameBoxConnectionString %>" SelectCommand="SELECT * FROM [User]"></asp:SqlDataSource>
+                      </td>
+                      <td class="auto-style1">&nbsp;</td>
+                      <td class="auto-style1">&nbsp;</td>
+                  </tr>
+                  <tr>
+                      <td>
+                                <asp:Button ID="VerifyBtn" runat="server" Text="Verify" ForeColor="#263635" OnClick="VerifyBtn_Click" />
                             </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                PASSWORD:&nbsp; <asp:TextBox ID="PasswordTxtBox" runat="server" Width="243px" TextMode="Password" ForeColor="Black"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TheGameBoxConnectionString %>" SelectCommand="SELECT * FROM [User]"></asp:SqlDataSource>
-                                <br />
-                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:TheGameBoxConnectionString %>" SelectCommand="SELECT * FROM [Admin]"></asp:SqlDataSource>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:Button ID="LoginBtn" runat="server" Text="Login" ForeColor="#263635" OnClick="LoginBtn_Click" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Don't have an account yet?<br/>
-		                <a href="Verify.aspx" style="color:aqua"><u>Create an account</u></a>
-                                <br />
-                                <asp:CheckBox ID="AdminCheckBox" runat="server" Text="Login as Admin" />
-                            </td>
-                        </tr>
-                    </table>
-		
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                  </tr>
+              </table>
+		     
 		        </div>
 		
 		          <!-- Modal -->
@@ -101,7 +106,6 @@
 		
 		      </form>
 	  	
-	  	</div>
 	  </div>
 
     <!-- js placed at the end of the document so the pages load faster -->
@@ -114,6 +118,9 @@
     <script>
         $.backstretch("assets/img/login-bg.jpg", {speed: 500});
     </script>
+
+
+      
 
 
   </body>
