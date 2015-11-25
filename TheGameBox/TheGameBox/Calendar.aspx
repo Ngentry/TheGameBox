@@ -21,7 +21,7 @@
 
                 <td>
                     <h2>Agenda for <asp:Label ID="DateStartLbl" runat="server" Text="Label"></asp:Label> - <asp:Label ID="DateEndLbl" runat="server" Text="Label"></asp:Label></h2>
-                <asp:TextBox ID="AgendaBox" runat="server" TextMode="MultiLine" Height="432px" Width="459px"></asp:TextBox></td>
+                <asp:TextBox ID="AgendaBox" runat="server" TextMode="MultiLine" Height="432px" Width="459px" ForeColor="#000066"></asp:TextBox></td>
             </tr>
 
             <tr>

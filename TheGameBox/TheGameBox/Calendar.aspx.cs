@@ -15,7 +15,7 @@ namespace TheGameBox
         protected void Page_Load(object sender, EventArgs e)
         {
             string UserName;
-            int UserID;
+            int UserID = 0;
 
             if(Session["UserName"]!=null || Session["UserID"] != null)
             {
@@ -24,8 +24,8 @@ namespace TheGameBox
             }
             else
             {
-                UserName = "TestAccount";
-                UserID = 1;
+                Response.Redirect("/LoginPage.aspx");
+
             }
 
             string startDate = Calendar1.TodaysDate.ToShortDateString();
