@@ -227,7 +227,6 @@
     </Compile>
     <Compile Include="NewLogin.aspx.cs">
       <DependentUpon>NewLogin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="NewLogin.aspx.designer.cs">
       <DependentUpon>NewLogin.aspx</DependentUpon>
