@@ -37,7 +37,8 @@ namespace TheGameBox
             string endDate = Calendar1.TodaysDate.AddDays(7).ToShortDateString();
             DateStartLbl.Text = startDate;
             DateEndLbl.Text = endDate;
-            
+
+            OldEventsDateLbl.Text = startDate;
 
             SqlConnection db = new SqlConnection(SqlDataSource1.ConnectionString);
             SqlCommand cmd = new SqlCommand();
@@ -104,20 +105,25 @@ namespace TheGameBox
 
             AddEventBtn.Enabled = false;
             RemoveEventBtn.Enabled = false;
+            DeleteOldEventsBtn.Enabled = false;
 
             AddEventBtn.Visible = false;
             RemoveEventBtn.Visible = false;
+            DeleteOldEventsBtn.Visible= false;
 
             AddEventPanel.Visible = true;
         }
 
         protected void RemoveEventBtn_Click(object sender, EventArgs e)
         {
+
             AddEventBtn.Enabled = false;
             RemoveEventBtn.Enabled = false;
+            DeleteOldEventsBtn.Enabled = false;
 
             AddEventBtn.Visible = false;
             RemoveEventBtn.Visible = false;
+            DeleteOldEventsBtn.Visible = false;
 
             RemoveEventPanel.Visible = true;
         }
@@ -128,9 +134,11 @@ namespace TheGameBox
 
             AddEventBtn.Enabled = true;
             RemoveEventBtn.Enabled = true;
+            DeleteOldEventsBtn.Enabled = true;
 
             AddEventBtn.Visible = true;
             RemoveEventBtn.Visible = true;
+            DeleteOldEventsBtn.Visible = true;
         }
 
         protected void RemoveCancel_Click(object sender, EventArgs e)
@@ -139,8 +147,11 @@ namespace TheGameBox
 
             AddEventBtn.Enabled = true;
             RemoveEventBtn.Enabled = true;
+            DeleteOldEventsBtn.Enabled = true;
+
             AddEventBtn.Visible = true;
             RemoveEventBtn.Visible = true;
+            DeleteOldEventsBtn.Visible = true;
         }
 
         protected void AddEventFinalBtn_Click(object sender, EventArgs e)
@@ -184,9 +195,11 @@ namespace TheGameBox
 
                 AddEventBtn.Enabled = true;
                 RemoveEventBtn.Enabled = true;
+                DeleteOldEventsBtn.Enabled = true;
 
                 AddEventBtn.Visible = true;
                 RemoveEventBtn.Visible = true;
+                DeleteOldEventsBtn.Visible = true;
 
                 Response.Redirect("/Calendar.aspx");
             }
@@ -259,9 +272,11 @@ namespace TheGameBox
             RemoveEventPanel.Visible = false;
             AddEventBtn.Enabled = true;
             RemoveEventBtn.Enabled = true;
+            DeleteOldEventsBtn.Enabled = true;
 
             AddEventBtn.Visible = true;
             RemoveEventBtn.Visible = true;
+            DeleteOldEventsBtn.Visible = true;
 
             Response.Redirect("/calendar.aspx");
         }
@@ -315,5 +330,99 @@ namespace TheGameBox
                 db.Close();
             }
         }
+
+        protected void DeleteOldEventsBtn_Click(object sender, EventArgs e)
+        {
+            AddEventBtn.Enabled = false;
+            RemoveEventBtn.Enabled = false;
+
+            AddEventBtn.Visible = false;
+            RemoveEventBtn.Visible = false;
+
+            DeleteOldEventsPanel.Visible = true;
+        }
+
+        protected void DeleteOldEvents_Click(object sender, EventArgs e)
+        {
+            AddEventBtn.Enabled = false;
+            RemoveEventBtn.Enabled = false;
+            DeleteOldEventsBtn.Enabled = false;
+
+            AddEventBtn.Visible = false;
+            RemoveEventBtn.Visible = false;
+            DeleteOldEventsBtn.Visible = false;
+
+            DeleteOldEventsPanel.Visible = true;
+
+        }
+
+        protected void CancelOldEvents_Click(object sender, EventArgs e)
+        {
+            AddEventBtn.Enabled = true;
+            RemoveEventBtn.Enabled = true;
+            DeleteOldEventsBtn.Enabled = true;
+
+            AddEventBtn.Visible = true;
+            RemoveEventBtn.Visible = true;
+            DeleteOldEventsBtn.Visible = true;
+
+            DeleteOldEventsPanel.Visible = false;
+        }
+
+        protected void DeleteOldEventsFinal_Click(object sender, EventArgs e)
+        {
+            string todaysDate = Calendar1.TodaysDate.ToShortDateString();
+            int UserID = (int)Session["UserID"];
+            SqlConnection db = new SqlConnection(SqlDataSource1.ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.Connection = db;
+            cmd.CommandText = "DELETE  FROM [Calendar] WHERE Calendar_UserID = '" + UserID+ "' AND Calendar_EventDate < '" + todaysDate + "'";
+
+
+            db.Open();
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                AgendaBox.Text = "An error occured deleting from database!";
+
+            }
+            finally
+            {
+                db.Close();
+            }
+
+
+            DeleteOldEventsPanel.Visible = false;
+            AddEventBtn.Enabled = true;
+            RemoveEventBtn.Enabled = true;
+            DeleteOldEventsBtn.Enabled = true;
+
+            AddEventBtn.Visible = true;
+            RemoveEventBtn.Visible = true;
+            DeleteOldEventsBtn.Visible = true;
+
+            Response.Redirect("/calendar.aspx");
+        }
+
+        protected void DeleteOldEventCancelBtn_Click(object sender, EventArgs e)
+        {
+            AddEventBtn.Enabled = true;
+            RemoveEventBtn.Enabled = true;
+            DeleteOldEventsBtn.Enabled = true;
+
+            AddEventBtn.Visible = true;
+            RemoveEventBtn.Visible = true;
+            DeleteOldEventsBtn.Visible = true;
+
+            DeleteOldEventsPanel.Visible = false;
+        }
+
+
+
     }
 }

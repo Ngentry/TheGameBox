@@ -49,6 +49,15 @@ namespace TheGameBox {
         protected global::System.Web.UI.WebControls.Button RemoveEventBtn;
         
         /// <summary>
+        /// DeleteOldEventsBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button DeleteOldEventsBtn;
+        
+        /// <summary>
         /// DateStartLbl control.
         /// </summary>
         /// <remarks>
@@ -191,6 +200,42 @@ namespace TheGameBox {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button RemoveCancel;
+        
+        /// <summary>
+        /// DeleteOldEventsPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel DeleteOldEventsPanel;
+        
+        /// <summary>
+        /// OldEventsDateLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label OldEventsDateLbl;
+        
+        /// <summary>
+        /// DeleteOldEventsFinal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button DeleteOldEventsFinal;
+        
+        /// <summary>
+        /// DeleteOldEventCancelBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button DeleteOldEventCancelBtn;
         
         /// <summary>
         /// SqlDataSource1 control.

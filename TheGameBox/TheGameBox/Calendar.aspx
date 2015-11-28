@@ -17,6 +17,8 @@
                     <asp:Button ID="AddEventBtn" runat="server" Text="Add Event" OnClick="AddEventBtn_Click" />
                     <asp:Button ID="RemoveEventBtn" runat="server" Text="Remove Event" OnClick="RemoveEventBtn_Click" />
 
+                    <asp:Button ID="DeleteOldEventsBtn" runat="server" OnClick="DeleteOldEvents_Click" Text="Remove Old Events" />
+
                 </td>
 
                 <td>
@@ -299,6 +301,31 @@
                             </table>
                         </asp:Panel>
                         <br />
+                    <asp:Panel ID="DeleteOldEventsPanel" runat="server" Visible="False">
+                        <table style="width:100%;">
+                            <tr>
+                                <td style="width: 430px">Remove All Old Events</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 430px">Pressing &quot;Delete All Old Events&quot; will PERMANENTLY delete all events before
+                                    <asp:Label ID="OldEventsDateLbl" runat="server" Text="Label"></asp:Label>
+                                    .</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 430px">
+                                    <asp:Button ID="DeleteOldEventsFinal" runat="server" Text="Delete All Old Events" OnClick="DeleteOldEventsFinal_Click" />
+                                </td>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <asp:Button ID="DeleteOldEventCancelBtn" runat="server" OnClick="DeleteOldEventCancelBtn_Click" Text="Cancel" />
+                                </td>
+                            </tr>
+                        </table>
+                    </asp:Panel>
                     <br />
                     <br />
                     <br />
