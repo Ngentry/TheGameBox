@@ -81,7 +81,7 @@ namespace TheGameBox
                     db.Close();
 
                     Session["UserID"] = Int32.Parse(UserID);
-                    Response.Redirect("/Calendar.aspx");
+                    Response.Redirect("/Default.aspx");
                 }
                 else if (count == -1)//error with database has occured
                 {
