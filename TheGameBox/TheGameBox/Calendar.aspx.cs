@@ -12,22 +12,27 @@ namespace TheGameBox
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            string UserName;
+            string UserName = "";
             int UserID = 0;
 
             if(Session["UserName"]!=null || Session["UserID"] != null)
             {
                 UserName = (string)(Session["UserName"]);
                 UserID = (int)(Session["UserID"]);
+
+                Session["UserName"] = UserName;
+                Session["UserID"] = UserID;
+                
             }
             else
             {
                 Response.Redirect("/LoginPage.aspx");
 
             }
-
+            UserNamePageLbl.Text = UserName;
             string startDate = Calendar1.TodaysDate.ToShortDateString();
             string endDate = Calendar1.TodaysDate.AddDays(7).ToShortDateString();
             DateStartLbl.Text = startDate;
@@ -100,6 +105,9 @@ namespace TheGameBox
             AddEventBtn.Enabled = false;
             RemoveEventBtn.Enabled = false;
 
+            AddEventBtn.Visible = false;
+            RemoveEventBtn.Visible = false;
+
             AddEventPanel.Visible = true;
         }
 
@@ -107,6 +115,9 @@ namespace TheGameBox
         {
             AddEventBtn.Enabled = false;
             RemoveEventBtn.Enabled = false;
+
+            AddEventBtn.Visible = false;
+            RemoveEventBtn.Visible = false;
 
             RemoveEventPanel.Visible = true;
         }
@@ -117,6 +128,9 @@ namespace TheGameBox
 
             AddEventBtn.Enabled = true;
             RemoveEventBtn.Enabled = true;
+
+            AddEventBtn.Visible = true;
+            RemoveEventBtn.Visible = true;
         }
 
         protected void RemoveCancel_Click(object sender, EventArgs e)
@@ -125,6 +139,8 @@ namespace TheGameBox
 
             AddEventBtn.Enabled = true;
             RemoveEventBtn.Enabled = true;
+            AddEventBtn.Visible = true;
+            RemoveEventBtn.Visible = true;
         }
 
         protected void AddEventFinalBtn_Click(object sender, EventArgs e)
@@ -134,36 +150,84 @@ namespace TheGameBox
             string description = EventDescriptionTxtBox.Text;
             string startTime = TimeStartDrpList.Text;
             string endTime = TimeEndDrpList.Text;
-            int UserID = 1;
 
-            SqlConnection db = new SqlConnection(SqlDataSource1.ConnectionString);
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = System.Data.CommandType.Text;
-            cmd.Connection = db;
-            cmd.CommandText = "INSERT [Calendar] (Calendar_EventDate, Calendar_EventName, Calendar_EventSummary, Calendar_UserID, Calendar_TimeStart, Calendar_TimeEnd) VALUES('" + date + "', '" + eventName + "', '" + description + "', '"+UserID+"', '" + startTime + "', '" + endTime + "' )";
+            int UserID = (int)(Session["UserID"]);
+            bool validTime = false;
 
-            db.Open();
+            validTime = GetValidTime(startTime,endTime);
 
-            try
+            if (validTime == true)
             {
-                cmd.ExecuteNonQuery();
+                SqlConnection db = new SqlConnection(SqlDataSource1.ConnectionString);
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection = db;
+                cmd.CommandText = "INSERT [Calendar] (Calendar_EventDate, Calendar_EventName, Calendar_EventSummary, Calendar_UserID, Calendar_TimeStart, Calendar_TimeEnd) VALUES('" + date + "', '" + eventName + "', '" + description + "', '" + UserID + "', '" + startTime + "', '" + endTime + "' )";
+
+                db.Open();
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    AgendaBox.Text = "An error occured writing into database!";
+
+                }
+                finally
+                {
+                    db.Close();
+                }
+
+                AddEventPanel.Visible = false;
+
+                AddEventBtn.Enabled = true;
+                RemoveEventBtn.Enabled = true;
+
+                AddEventBtn.Visible = true;
+                RemoveEventBtn.Visible = true;
+
+                Response.Redirect("/Calendar.aspx");
             }
-            catch
+            else
             {
-                AgendaBox.Text = "An error occured writing into database!";
-
+                Response.Write(@"<script language='javascript'>alert('Time range is not valid!');</script>");
             }
-            finally
+        }
+
+        protected bool GetValidTime(string startTime, string endTime)
+        {
+            if(startTime.Contains("AM") && endTime.Contains("PM"))
             {
-                db.Close();
+                return true;
             }
-
-            AddEventPanel.Visible = false;
-
-            AddEventBtn.Enabled = true;
-            RemoveEventBtn.Enabled = true;
-            Calendar1.SelectedDayStyle.BackColor = System.Drawing.Color.Red;
-            Response.Redirect("/Calendar.aspx");
+            else if(startTime.Contains("AM") && endTime.Contains("AM"))
+            {
+                if (startTime.CompareTo(endTime) < 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if(startTime.Contains("PM") && endTime.Contains("PM"))
+            {
+                if (startTime.CompareTo(endTime) < 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
 
         protected void FinalRemoveEventBtn_Click(object sender, EventArgs e)
@@ -195,6 +259,10 @@ namespace TheGameBox
             RemoveEventPanel.Visible = false;
             AddEventBtn.Enabled = true;
             RemoveEventBtn.Enabled = true;
+
+            AddEventBtn.Visible = true;
+            RemoveEventBtn.Visible = true;
+
             Response.Redirect("/calendar.aspx");
         }
 

@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebPage.Master" AutoEventWireup="true" CodeBehind="Calendar.aspx.cs" Inherits="TheGameBox.WebForm1" %>
 <asp:Content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolder1">
-    <form id="form1" runat="server">
+    <h1><asp:Label ID="UserNamePageLbl" runat="server" Text="Label"></asp:Label></h1>
         <table style="width:100%;">
             <tr>
                 <td>
@@ -21,7 +21,7 @@
 
                 <td>
                     <h2>Agenda for <asp:Label ID="DateStartLbl" runat="server" Text="Label"></asp:Label> - <asp:Label ID="DateEndLbl" runat="server" Text="Label"></asp:Label></h2>
-                <asp:TextBox ID="AgendaBox" runat="server" TextMode="MultiLine" Height="432px" Width="459px" ForeColor="#000066"></asp:TextBox></td>
+                <asp:TextBox ID="AgendaBox" runat="server" TextMode="MultiLine" Height="432px" Width="459px" ForeColor="#1A1F1F"></asp:TextBox></td>
             </tr>
 
             <tr>
@@ -277,7 +277,8 @@
                                 <tr>
                                     <td style="width: 194px">Select Event</td>
                                     <td>
-                                        <asp:DropDownList ID="RemoveEventDrpDwn" AutoPostBack="True" runat="server" DataSourceID="SqlDataSource1" DataTextField="Calendar_EventName" DataValueField="Calendar_EventID" OnSelectedIndexChanged="RemoveEventDrpDwn_SelectedIndexChanged">
+                                        <asp:DropDownList ID="RemoveEventDrpDwn" AutoPostBack="True" runat="server" DataSourceID="SqlDataSource1" DataTextField="Calendar_EventName" DataValueField="Calendar_EventID" OnSelectedIndexChanged="RemoveEventDrpDwn_SelectedIndexChanged"  AppendDataBoundItems="true">
+                                        <asp:ListItem Text="--Select One--" Value="" />  
                                         </asp:DropDownList>
                                     </td>
                                 </tr>
@@ -323,5 +324,8 @@
             </tr>
 
         </table>
-    </form>
 </asp:Content>
+
+
+
+

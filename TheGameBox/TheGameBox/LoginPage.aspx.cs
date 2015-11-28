@@ -21,6 +21,7 @@ namespace TheGameBox
             string userName = UserNameTxtBox.Text;
             string password = PasswordTxtBox.Text;
             string UserID = "";
+            string AdminID = "";
 
 
             SqlConnection db = new SqlConnection(SqlDataSource1.ConnectionString);
@@ -113,6 +114,9 @@ namespace TheGameBox
 
                 if (count > 0)//send user to next page
                 {
+                    Session["UserName"] = userName;
+
+                    Session["UserID"] = 0;
                     Response.Redirect("/Admin_Home.aspx");
                 }
                 else if (count == -1)//error with database has occured

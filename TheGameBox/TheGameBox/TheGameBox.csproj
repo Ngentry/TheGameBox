@@ -112,6 +112,7 @@
     <Content Include="assets\img\ui-sherman.jpg" />
     <Content Include="assets\img\ui-zac.jpg" />
     <Content Include="assets\img\weather.jpg" />
+    <Content Include="assets\img\webpageBackground.jpg" />
     <Content Include="assets\img\zoom.png" />
     <Content Include="assets\js\bootstrap-inputmask\bootstrap-inputmask.min.js" />
     <Content Include="assets\js\bootstrap-switch.js" />
