@@ -85,7 +85,7 @@
                       </a>
                       <ul class="sub">
                           <li><a  href="Calendar.aspx">Personal Calendar</a></li>
-                          <li><a  href="#">Group Calendar</a></li>
+                          <li><a  href="GroupCalendar.aspx">Group Calendar</a></li>
                       </ul>
                   </li>
 

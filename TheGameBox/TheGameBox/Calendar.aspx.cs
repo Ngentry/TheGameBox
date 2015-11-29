@@ -12,6 +12,8 @@ namespace TheGameBox
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+        protected DateTime[] listOfDates = new DateTime [500];
+        protected int numberOfEvents = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -61,7 +63,7 @@ namespace TheGameBox
 
                     DateTime dt = Convert.ToDateTime(sdr["Calendar_EventDate"].ToString());
 
-                    AgendaBox.Text += dt.ToShortDateString() +"\n";
+                    AgendaBox.Text += dt.ToShortDateString() + "\n";
 
                     AgendaBox.Text += "Summary: ";
                     AgendaBox.Text += sdr["Calendar_EventSummary"].ToString() + "\n";
@@ -86,7 +88,50 @@ namespace TheGameBox
             {
                 db.Close();
             }
-            
+
+
+
+            /*Mark off dates with Events*/
+            cmd.CommandText = "Select * FROM [Calendar] WHERE Calendar_UserID = " + UserID + " ORDER BY Calendar_EventDate";
+
+
+            db.Open();
+
+            try
+            {
+                SqlDataReader sdr = cmd.ExecuteReader();
+
+                while (sdr.Read())
+                {
+
+                    DateTime dt2 = Convert.ToDateTime(sdr["Calendar_EventDate"].ToString());
+                    listOfDates[numberOfEvents] = dt2;
+                    numberOfEvents = numberOfEvents + 1;
+
+                }
+            }
+            catch
+            {
+                AgendaBox.Text = "An error occured displaying!";
+                AgendaBox.Visible = true;
+            }
+            finally
+            {
+                db.Close();
+            }
+
+        }
+
+        protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
+        {
+            for (int x = 0; x < numberOfEvents; x++ )
+            {
+                if (e.Day.Date == listOfDates[x].Date)
+                {
+                    e.Cell.BackColor = System.Drawing.Color.Aqua;
+                }
+            }
+
         }
 
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
