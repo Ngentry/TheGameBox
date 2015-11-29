@@ -563,7 +563,7 @@ namespace TheGameBox
             switch (endTime)
             {
                 case "12:00 AM":
-                    startValue = 1;
+                    endValue = 1;
                     break;
                 case "12:15 AM":
                     endValue = 2;
