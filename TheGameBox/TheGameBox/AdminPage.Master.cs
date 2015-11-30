@@ -20,6 +20,7 @@ namespace TheGameBox
                 UserID = (int)(Session["UserID"]);
 
                 Session["UserName"] = UserName;
+                Session["UserID"] = UserID;
             }
             else
             {

@@ -21,7 +21,7 @@ namespace TheGameBox
             string userName = UserNameTxtBox.Text;
             string password = PasswordTxtBox.Text;
             string UserID = "";
-            string AdminID = "";
+            //string AdminID = "";
 
 
             SqlConnection db = new SqlConnection(SqlDataSource1.ConnectionString);

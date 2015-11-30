@@ -155,7 +155,6 @@
     <Content Include="assets\lineicons\index.html" />
     <Content Include="assets\lineicons\lte-ie7.js" />
     <Content Include="assets\lineicons\style.css" />
-    <Content Include="Default2.aspx" />
     <Content Include="packages.config" />
     <Content Include="assets\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="assets\font-awesome\fonts\fontawesome-webfont.ttf" />
@@ -181,11 +180,10 @@
     <Content Include="Register.aspx" />
     <Content Include="Verify.aspx" />
     <Content Include="User_Control.aspx" />
-    <Content Include="Admin_Control.aspx" />
-    <Content Include="Group_Control.aspx" />
     <Content Include="Game_Control.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="GroupCalendar.aspx" />
+    <Content Include="Admin_Control.aspx" />
+    <Content Include="Group_Control.aspx" />
     <Content Include="WebPage.Master" />
     <Content Include="AdminPage.Master" />
   </ItemGroup>
@@ -199,13 +197,6 @@
     </Compile>
     <Compile Include="assets\WebPage.Master.designer.cs">
       <DependentUpon>WebPage.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Default2.aspx.cs">
-      <DependentUpon>Default2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default2.aspx.designer.cs">
-      <DependentUpon>Default2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.Master.cs">
       <DependentUpon>Login.Master</DependentUpon>
@@ -264,20 +255,6 @@
     <Compile Include="User_Control.aspx.designer.cs">
       <DependentUpon>User_Control.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin_Control.aspx.cs">
-      <DependentUpon>Admin_Control.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin_Control.aspx.designer.cs">
-      <DependentUpon>Admin_Control.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Group_Control.aspx.cs">
-      <DependentUpon>Group_Control.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Group_Control.aspx.designer.cs">
-      <DependentUpon>Group_Control.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Game_Control.aspx.cs">
       <DependentUpon>Game_Control.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -292,12 +269,19 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="GroupCalendar.aspx.cs">
-      <DependentUpon>GroupCalendar.aspx</DependentUpon>
+    <Compile Include="Admin_Control.aspx.cs">
+      <DependentUpon>Admin_Control.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="GroupCalendar.aspx.designer.cs">
-      <DependentUpon>GroupCalendar.aspx</DependentUpon>
+    <Compile Include="Admin_Control.aspx.designer.cs">
+      <DependentUpon>Admin_Control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Group_Control.aspx.cs">
+      <DependentUpon>Group_Control.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Group_Control.aspx.designer.cs">
+      <DependentUpon>Group_Control.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebPage.Master.cs">
       <DependentUpon>WebPage.Master</DependentUpon>

@@ -42,7 +42,7 @@
             <a href="index.html" class="logo"><b>The Game Box</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
-                <asp:Label ID="lblWelcome" runat="server" Text="Admin Control Panel" Font-Size="X-Large"></asp:Label>
+                <asp:Label ID="lblWelcome" runat="server" Text="Admin Control Panel" Font-Size="X-Large" ForeColor="White" Font-Overline="False"></asp:Label>
             </div>
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">

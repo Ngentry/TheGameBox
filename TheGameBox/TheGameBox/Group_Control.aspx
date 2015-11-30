@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminPage.Master" AutoEventWireup="true" CodeBehind="Group_Control.aspx.cs" Inherits="TheGameBox.WebForm7" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2>Manage Groups</h2>
+    <form id="form1" runat="server">
+    <h2>Group Control</h2>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" DataKeyNames="Group_Id" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="Vertical" ShowFooter="True">
         <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
-            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+            <asp:CommandField CausesValidation="False" ShowDeleteButton="True" ShowEditButton="True" />
             <asp:TemplateField HeaderText="Group_Id" InsertVisible="False" SortExpression="Group_Id">
                 <EditItemTemplate>
                     <asp:Label ID="Label1" runat="server" Text='<%# Eval("Group_Id") %>'></asp:Label>
@@ -13,7 +14,7 @@
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("Group_Id") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                        <asp:LinkButton ID="btnInsert" runat="server" OnClick="lblInsert_Click">Insert</asp:LinkButton>
+                    <asp:LinkButton ID="btnInsert" runat="server" OnClick="lblInsert_Click">Insert</asp:LinkButton>
                 </FooterTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Group_Name" SortExpression="Group_Name">
@@ -24,7 +25,7 @@
                     <asp:Label ID="Label2" runat="server" Text='<%# Bind("Group_Name") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                         <asp:TextBox ID="txtGroupName" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtGroupName" runat="server"></asp:TextBox>
                 </FooterTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Group_Creater" SortExpression="Group_Creater">
@@ -35,7 +36,7 @@
                     <asp:Label ID="Label3" runat="server" Text='<%# Bind("Group_Creater") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                       <asp:TextBox ID="txtUserID" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtGroupCreater" runat="server"></asp:TextBox>
                 </FooterTemplate>
             </asp:TemplateField>
         </Columns>
@@ -48,11 +49,7 @@
         <SortedDescendingCellStyle BackColor="#CAC9C9" />
         <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TheGameBoxConnectionString %>" 
-                    DeleteCommand="DELETE FROM [Group] WHERE [Group_Id] = @Group_Id" 
-                    InsertCommand="INSERT INTO [Group] ([Group_Name], [Group_Creater]) VALUES (@Group_Name, @Group_Creater)" 
-                    SelectCommand="SELECT [Group_Id], [Group_Name], [Group_Creater] FROM [Group]" 
-                    UpdateCommand="UPDATE [Group] SET [Group_Name] = @Group_Name, [Group_Creater] = @Group_Creater WHERE [Group_Id] = @Group_Id">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TheGameBoxConnectionString %>" DeleteCommand="DELETE FROM [Group] WHERE [Group_Id] = @Group_Id" InsertCommand="INSERT INTO [Group] ([Group_Name], [Group_Creater]) VALUES (@Group_Name, @Group_Creater)" SelectCommand="SELECT [Group_Id], [Group_Name], [Group_Creater] FROM [Group] ORDER BY [Group_Id]" UpdateCommand="UPDATE [Group] SET [Group_Name] = @Group_Name, [Group_Creater] = @Group_Creater WHERE [Group_Id] = @Group_Id">
         <DeleteParameters>
             <asp:Parameter Name="Group_Id" Type="Int32" />
         </DeleteParameters>
@@ -66,4 +63,10 @@
             <asp:Parameter Name="Group_Id" Type="Int32" />
         </UpdateParameters>
     </asp:SqlDataSource>
+        <!--********************************************************************************
+        <br /> DEBUGGING CODE
+        <asp:Button ID="Button1" runat="server" Text="Button Test" OnClick="Button1_Click" />
+        <asp:Label ID="lblDebug" runat="server" Text="Button NOT Pressed"></asp:Label>
+        ************************************************************************************-->
+    </form>
 </asp:Content>
