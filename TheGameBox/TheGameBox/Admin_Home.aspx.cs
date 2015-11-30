@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Windows;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -20,13 +22,27 @@ namespace TheGameBox
                 UserID = (int)(Session["UserID"]);
 
                 Session["UserName"] = UserName;
+                Session["UserID"] = UserID;
             }
             else
             {
                 UserName = "Fancy Pants";
                 UserID = 1;
             }
-            Label1.Text = string.Format("<h1>{0}, Welcome Home!</h1>", UserName);
+            Label1.Text = "<h1>" + UserName +", Welcome Home!</h1>";
+            form1.DataBind();
+        }
+
+        protected void btnUpdateImage_Click(object sender, EventArgs e)
+        {
+            string UserName = (string)(Session["UserName"]);
+            string fileName = "~/Pictures/Admin/" + UserName + ".jpg";
+         
+         //   if(FileUploadControl.HasFile)
+         //   {
+        //        string filePath = Path.GetFileName(FileUploadControl.Filename);
+//
+          //  }
         }
     }
 }

@@ -177,6 +177,7 @@
     <Content Include="Calendar.aspx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="Admin_Home.aspx" />
+    <Content Include="Pictures\Admin\Admin.jpg" />
     <Content Include="Register.aspx" />
     <Content Include="Verify.aspx" />
     <Content Include="User_Control.aspx" />
@@ -291,7 +292,9 @@
       <DependentUpon>WebPage.Master</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Pictures\Users\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

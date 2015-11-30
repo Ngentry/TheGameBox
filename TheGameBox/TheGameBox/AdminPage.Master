@@ -39,7 +39,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>The Game Box</b></a>
+            <a href="Admin_Home.aspx" class="logo"><b>The Game Box</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <asp:Label ID="lblWelcome" runat="server" Text="Admin Control Panel" Font-Size="X-Large" ForeColor="White" Font-Overline="False"></asp:Label>
@@ -61,7 +61,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="profile.html"><img src="assets/img/gavel-small.jpg" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><a  href="Admin_Home.aspx"><img id="ProfileImage" runat="server" src="assets/img/gavel-small.jpg" class="img-circle" width="60"></a></p>
               	  <h5 class="centered"></h5>
               	  	
                   <li class="mt">
@@ -127,9 +127,6 @@
       <footer class="site-footer">
           <div class="text-center">
               2015 - The Game Box
-              <a href="blank.html#" class="go-top">
-                  <i class="fa fa-angle-up"></i>
-              </a>
           </div>
       </footer>
       <!--footer end-->
