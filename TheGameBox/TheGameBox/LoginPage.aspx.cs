@@ -13,6 +13,9 @@ namespace TheGameBox
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["UserName"] = "";
+            Session["UserID"] = "";
+            Session["UserState"] = "";
             failLbl.Visible = false;
         }
 
@@ -37,6 +40,10 @@ namespace TheGameBox
             SqlCommand cmd2 = new SqlCommand();
             cmd2.CommandType = System.Data.CommandType.Text;
             cmd2.Connection = db2;
+
+            SqlCommand cmd4 = new SqlCommand();
+            cmd4.CommandType = System.Data.CommandType.Text;
+            cmd4.Connection = db2;
 
             if (userName == "")//makes sure that a user name is provided
             {
@@ -116,12 +123,21 @@ namespace TheGameBox
                 {
                     Session["UserName"] = userName;
 
-                    Session["UserID"] = 0;
+                    db2.Open();
+                    cmd4.CommandText = "Select * FROM [Admin] WHERE Admin_AdminName ='" + userName + "'COLLATE SQL_Latin1_General_CP1_CS_AS";
+                    SqlDataReader sdr2 = cmd4.ExecuteReader();
+                    while (sdr2.Read())
+                    {
+                        UserID = sdr2["Admin_AdminID"].ToString();
+                    }
+                    db2.Close();
+
+                    Session["UserID"] = Int32.Parse(UserID);
                     Response.Redirect("/Admin_Home.aspx");
                 }
                 else if (count == -1)//error with database has occured
                 {
-                    failLbl.Text = "*An error has occured with the admin database!";
+                    failLbl.Text = "*An error has occured with the Admin database!";
                     failLbl.Visible = true;
                 }
                 else//not valid credentials
@@ -129,7 +145,6 @@ namespace TheGameBox
                     failLbl.Text = "*Invalid Admin Name or Password!";
                     failLbl.Visible = true;
                 }
-
             }
         }
     }

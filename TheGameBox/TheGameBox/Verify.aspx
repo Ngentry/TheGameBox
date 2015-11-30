@@ -29,6 +29,13 @@
           .auto-style1 {
               height: 22px;
           }
+          .auto-style2 {
+              width: 93px;
+          }
+          .auto-style3 {
+              height: 22px;
+              width: 93px;
+          }
       </style>
   </head>
 
@@ -42,37 +49,34 @@
 
 	  <div>
 	  	<div style="color: #ffffff;">
-
+<td class="auto-style2"><h1>Registration</h1></td>
               <table style="width: 100%;">
                   <tr>
-                      <td><h1>Registration</h1></td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                  </tr>
-                  <tr>
-                      <td>SCREEN NAME:
+                      <td class="auto-style2">SCREEN NAME:&nbsp;
+                      </td>
+                      <td>
                           <asp:TextBox ID="userNameTxtBx" runat="server" Width="205px" ForeColor="Black"></asp:TextBox>
                           <asp:Label ID="ErrorLbl" runat="server" ForeColor="Red" Text="Label"></asp:Label>
                       </td>
                       <td>&nbsp;</td>
-                      <td>&nbsp;</td>
                   </tr>
                   <tr>
-                      <td class="auto-style1">EMAIL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <td class="auto-style3">EMAIL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                      </td>
+                      <td class="auto-style1">
                           <asp:TextBox ID="emailTxtBx" runat="server" TextMode="Email" Width="205px" ForeColor="Black"></asp:TextBox>
                       </td>
                       <td class="auto-style1"></td>
-                      <td class="auto-style1"></td>
                   </tr>
                   <tr>
-                      <td class="auto-style1">
+                      <td class="auto-style3">
                           <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TheGameBoxConnectionString %>" SelectCommand="SELECT * FROM [User]"></asp:SqlDataSource>
                       </td>
                       <td class="auto-style1">&nbsp;</td>
                       <td class="auto-style1">&nbsp;</td>
                   </tr>
                   <tr>
-                      <td>
+                      <td class="auto-style2">
                                 <asp:Button ID="VerifyBtn" runat="server" Text="Verify" ForeColor="#263635" OnClick="VerifyBtn_Click" />
                             </td>
                       <td>&nbsp;</td>
@@ -87,8 +91,7 @@
 		              <div class="modal-dialog">
 		                  <div class="modal-content">
 		                      <div class="modal-header">
-		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		                          <h4 class="modal-title">Forgot Password ?</h4>
+		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;                <h4 class="modal-title">Forgot Password ?</h4>
 		                      </div>
 		                      <div class="modal-body">
 		                          <p>Enter your e-mail address below to reset your password.</p>

@@ -11,7 +11,9 @@ namespace TheGameBox
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["UserName"] = "";
+            Session["UserID"] = "";
+            Session["UserState"] = "";
         }
     }
 }
