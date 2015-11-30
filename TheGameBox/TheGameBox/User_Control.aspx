@@ -15,62 +15,92 @@
                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("User_ID") %>'></asp:Label>
                     </ItemTemplate>
                     <FooterTemplate>
-                        <asp:LinkButton ID="btnInsert" runat="server" OnClick="lblInsert_Click">Insert</asp:LinkButton>
+                        <asp:LinkButton ID="btnInsert" ValidationGroup="INSERT" runat="server" OnClick="lblInsert_Click">Insert</asp:LinkButton>
                     </FooterTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="User_ScreenName" SortExpression="User_ScreenName">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("User_ScreenName") %>'></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvScreenName" runat="server" ErrorMessage="User_ScreenName is a required field"
+                            ControlToValidate="TextBox1" Text="*" ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("User_ScreenName") %>'></asp:Label>
                     </ItemTemplate>
                     <FooterTemplate>
-                        <asp:TextBox ID="txtUserName" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtUserScreenName" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvInsertUserScreenName" ValidationGroup="INSERT" runat="server" ErrorMessage="Screen Name is a required field"
+                            ControlToValidate="txtUserScreenName" Text="*" ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                     </FooterTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="User_FName" SortExpression="User_FName">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("User_FName") %>'></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvEditFName" runat="server" ErrorMessage="First Name is a required field"
+                            ControlToValidate="TextBox2" Text="*" ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label3" runat="server" Text='<%# Bind("User_FName") %>'></asp:Label>
                     </ItemTemplate>
                     <FooterTemplate>
                         <asp:TextBox ID="txtFName" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvInsertFName" ValidationGroup="INSERT" runat="server" ErrorMessage="First Name is a required field"
+                            ControlToValidate="txtFName" Text="*" ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                     </FooterTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="User_LName" SortExpression="User_LName">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("User_LName") %>'></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvEditLName" runat="server" ErrorMessage="Last Name is a required field"
+                            ControlToValidate="TextBox3" Text="*" ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label4" runat="server" Text='<%# Bind("User_LName") %>'></asp:Label>
                     </ItemTemplate>
                     <FooterTemplate>
                         <asp:TextBox ID="txtLName" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvInsertLName" ValidationGroup="INSERT" runat="server" ErrorMessage="Last Name is a required field"
+                            ControlToValidate="txtLName" Text="*" ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                     </FooterTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="User_Email" SortExpression="User_Email">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("User_Email") %>'></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvEditEmail" runat="server" ErrorMessage="Email is a required field"
+                            ControlToValidate="TextBox4" Text="*" ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label5" runat="server" Text='<%# Bind("User_Email") %>'></asp:Label>
                     </ItemTemplate>
                     <FooterTemplate>
                         <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvInsertEmail" ValidationGroup="INSERT" runat="server" ErrorMessage="Email is a required field"
+                            ControlToValidate="txtEmail" Text="*" ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                     </FooterTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="User_Password" SortExpression="User_Password">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("User_Password") %>'></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvEditPassword" runat="server" ErrorMessage="Password is a required field"
+                            ControlToValidate="TextBox5" Text="*" ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label6" runat="server" Text='<%# Bind("User_Password") %>'></asp:Label>
                     </ItemTemplate>
                     <FooterTemplate>
                         <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvInsertPassword" ValidationGroup="INSERT" runat="server" ErrorMessage="Password is a required field"
+                            ControlToValidate="txtPassword" Text="*" ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                     </FooterTemplate>
                 </asp:TemplateField>
             </Columns>
@@ -83,6 +113,8 @@
             <SortedDescendingCellStyle BackColor="#CAC9C9" />
             <SortedDescendingHeaderStyle BackColor="#383838" />
         </asp:GridView>
+        <asp:ValidationSummary ValidationGroup="INSERT" ID="ValidationSummary1" ForeColor="Red" runat="server" />
+        <asp:ValidationSummary ID="ValidationSummary2" ForeColor="Red" runat="server" />
         <br />
 
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TheGameBoxConnectionString %>" 

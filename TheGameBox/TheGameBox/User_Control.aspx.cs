@@ -20,7 +20,7 @@ namespace TheGameBox
 
         protected void lblInsert_Click (object sender, EventArgs e)
         {
-            SqlDataSource1.InsertParameters["User_ScreenName"].DefaultValue = ((TextBox)GridView1.FooterRow.FindControl("txtUserName")).Text;
+            SqlDataSource1.InsertParameters["User_ScreenName"].DefaultValue = ((TextBox)GridView1.FooterRow.FindControl("txtUserScreenName")).Text;
             SqlDataSource1.InsertParameters["User_FName"].DefaultValue = ((TextBox)GridView1.FooterRow.FindControl("txtFName")).Text;
             SqlDataSource1.InsertParameters["User_LName"].DefaultValue = ((TextBox)GridView1.FooterRow.FindControl("txtLName")).Text;
             SqlDataSource1.InsertParameters["User_Email"].DefaultValue = ((TextBox)GridView1.FooterRow.FindControl("txtEmail")).Text;
