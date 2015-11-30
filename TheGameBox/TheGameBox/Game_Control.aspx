@@ -36,6 +36,7 @@
         </asp:SqlDataSource>
         <br />
         <asp:Button ID="btnNew" runat="server" Text="New Game" OnClick="btnNew_Click" />
+        <br />
     <asp:FormView ID="FormView1" runat="server" DataSourceID="SqlDataSource2" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical" OnItemDeleted="FormView1_ItemDeleted" OnItemInserted="FormView1_ItemInserted" OnItemUpdated="FormView1_ItemUpdated" Width="485px">
 
          <EditRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
@@ -113,39 +114,39 @@
              <table border="1" style="width:100%;">
                  <tr>
                      <td>Game ID</td>
-                     <td><asp:Label ID="Label1" runat="server" Text='<%# Bind("Game_Id") %>'></asp:Label></td>
+                     <td><asp:Label ID="Label1" runat="server" Text='<%# Bind("Game_Id") %>' ></asp:Label></td>
                  </tr>
                  <tr>
                      <td>Game Title</td>
-                    <td><asp:TextBox ID="Label2" runat="server" Text='<%# Bind("Game_Title") %>'></asp:TextBox></td>
+                    <td><asp:TextBox ID="Label2" runat="server" Text='<%# Bind("Game_Title") %>'  Width="334px"></asp:TextBox></td>
                  </tr>
                  <tr>
                      <td>Game Genre</td>
-                     <td><asp:TextBox ID="Label3" runat="server" Text='<%# Bind("Gane_Genre") %>'></asp:TextBox></td>
+                     <td><asp:TextBox ID="Label3" runat="server" Text='<%# Bind("Gane_Genre") %>'  Width="334px"></asp:TextBox></td>
                  </tr>
                  <tr>
                      <td>Game Publisher</td>
-                     <td><asp:TextBox ID="Label4" runat="server" Text='<%# Bind("Game_Publisher") %>'></asp:TextBox></td>
+                     <td><asp:TextBox ID="Label4" runat="server" Text='<%# Bind("Game_Publisher") %>'  Width="334px"></asp:TextBox></td>
                  </tr>
                  <tr>
                      <td>Game Author</td>
-                     <td><asp:TextBox ID="Label5" runat="server" Text='<%# Bind("Game_Author") %>'></asp:TextBox></td>
+                     <td><asp:TextBox ID="Label5" runat="server" Text='<%# Bind("Game_Author") %>'  Width="334px"></asp:TextBox></td>
                  </tr>
                  <tr>
                      <td>Game Version</td>
-                     <td><asp:TextBox ID="Label6" runat="server" Text='<%# Bind("Game_Version") %>'></asp:TextBox></td>
+                     <td><asp:TextBox ID="Label6" runat="server" Text='<%# Bind("Game_Version") %>'  Width="334px"></asp:TextBox></td>
                  </tr>
                  <tr>
                      <td>Minimum Players</td>
-                     <td><asp:TextBox ID="Label8" runat="server" Text='<%# Bind("Game_MinPlayers") %>'></asp:TextBox></td>
+                     <td><asp:TextBox ID="Label8" runat="server" Text='<%# Bind("Game_MinPlayers") %>'  Width="334px"></asp:TextBox></td>
                  </tr>
                  <tr>
                      <td>Maximum Players </td>
-                     <td><asp:TextBox ID="Label9" runat="server" Text='<%# Bind("Game_MaxPlayers") %>'></asp:TextBox></td>
+                     <td><asp:TextBox ID="Label9" runat="server" Text='<%# Bind("Game_MaxPlayers") %>'  Width="334px"></asp:TextBox></td>
                  </tr>
                  <tr>
                      <td>Game Description</td>
-                     <td><asp:TextBox ID="Label10" runat="server" Text='<%# Bind("Game_Description") %>'></asp:TextBox></td>
+                     <td><asp:TextBox ID="Label10" runat="server" Text='<%# Bind("Game_Description") %>' Height="87px" TextMode="MultiLine" Width="334px"></asp:TextBox></td>
                  </tr>
              </table>
              <asp:LinkButton ID="btnUpdate" runat="server" CausesValidation="false" CommandName="Update" Text="Update"></asp:LinkButton>
@@ -172,31 +173,31 @@
                  </tr>
                  <tr>
                      <td>Game Genre</td>
-                     <td><asp:TextBox ID="Label3" runat="server" Text='<%# Bind("Gane_Genre") %>'></asp:TextBox></td>
+                     <td><asp:TextBox ID="Label3" runat="server" Text='<%# Bind("Gane_Genre") %>'  Width="334px"></asp:TextBox></td>
                  </tr>
                  <tr>
                      <td>Game Publisher</td>
-                     <td><asp:TextBox ID="Label4" runat="server" Text='<%# Bind("Game_Publisher") %>'></asp:TextBox></td>
+                     <td><asp:TextBox ID="Label4" runat="server" Text='<%# Bind("Game_Publisher") %>' Width="334px"></asp:TextBox></td>
                  </tr>
                  <tr>
                      <td>Game Author</td>
-                     <td><asp:TextBox ID="Label5" runat="server" Text='<%# Bind("Game_Author") %>'></asp:TextBox></td>
+                     <td><asp:TextBox ID="Label5" runat="server" Text='<%# Bind("Game_Author") %>'  Width="334px"></asp:TextBox></td>
                  </tr>
                  <tr>
                      <td>Game Version</td>
-                     <td><asp:TextBox ID="Label6" runat="server" Text='<%# Bind("Game_Version") %>'></asp:TextBox></td>
+                     <td><asp:TextBox ID="Label6" runat="server" Text='<%# Bind("Game_Version") %>'  Width="334px"></asp:TextBox></td>
                  </tr>
                  <tr>
                      <td>Minimum Players</td>
-                     <td><asp:TextBox ID="Label8" runat="server" Text='<%# Bind("Game_MinPlayers") %>'></asp:TextBox></td>
+                     <td><asp:TextBox ID="Label8" runat="server" Text='<%# Bind("Game_MinPlayers") %>'  Width="334px"></asp:TextBox></td>
                  </tr>
                  <tr>
                      <td>Maximum Players </td>
-                     <td><asp:TextBox ID="Label9" runat="server" Text='<%# Bind("Game_MaxPlayers") %>'></asp:TextBox></td>
+                     <td><asp:TextBox ID="Label9" runat="server" Text='<%# Bind("Game_MaxPlayers") %>' Width="334px"></asp:TextBox></td>
                  </tr>
                  <tr>
                      <td>Game Description</td>
-                     <td><asp:TextBox ID="Label10" runat="server" Text='<%# Bind("Game_Description") %>'></asp:TextBox></td>
+                     <td><asp:TextBox ID="Label10" runat="server" Text='<%# Bind("Game_Description") %>'  Height="87px" TextMode="MultiLine" Width="334px"></asp:TextBox></td>
                  </tr>
              </table>
              <asp:LinkButton ID="btnInsert" runat="server" CausesValidation="false" CommandName="Insert" Text="Insert"></asp:LinkButton>

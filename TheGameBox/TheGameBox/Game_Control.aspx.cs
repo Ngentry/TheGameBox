@@ -13,5 +13,25 @@ namespace TheGameBox
         {
 
         }
+
+        protected void btnNew_Click(object sender, EventArgs e)
+        {
+            FormView1.ChangeMode(FormViewMode.Insert);
+        }
+
+        protected void FormView1_ItemDeleted(object sender, FormViewDeletedEventArgs e)
+        {
+            GridView1.DataBind();
+        }
+
+        protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
+        {
+            GridView1.DataBind();
+        }
+
+        protected void FormView1_ItemUpdated(object sender, FormViewUpdatedEventArgs e)
+        {
+            GridView1.DataBind();
+        }
     }
 }
