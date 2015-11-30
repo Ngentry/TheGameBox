@@ -1,12 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminPage.Master" AutoEventWireup="true" CodeBehind="Admin_Home.aspx.cs" Inherits="TheGameBox.WebForm4" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <form id="form1" runat="server">
-    <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> 
+    <form id="form1" runat="server"> 
     <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-        <asp:FileUpload ID="FileUploadControl" runat="server" ToolTip="Please Select a .jpg to upload" />
-            <br />
-            <asp:Button ID="btnUpdateImage" runat="server" Text="Upload" OnClick="btnUpdateImage_Click" />
-            <asp:Label ID="lblError" runat="server" Text="Please Upload a JPG File." Visible="False" ForeColor="#CC0000"></asp:Label>
             <br />
     <asp:FormView ID="FormView1" runat="server" DataKeyNames="Admin_AdminID" DataSourceID="SqlDataSource1">
         <EditItemTemplate>
