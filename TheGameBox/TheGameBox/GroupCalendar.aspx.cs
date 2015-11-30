@@ -18,6 +18,7 @@ namespace TheGameBox
         {
             string UserName = "";
             int UserID = 0;
+            int GroupID = 0;
 
             if (Session["UserName"] != null || Session["UserID"] != null)
             {
@@ -33,6 +34,25 @@ namespace TheGameBox
                 Response.Redirect("/LoginPage.aspx");
 
             }
+
+            if (Session["CalGroupID"] != null)
+            {
+                if (Session["CalGroupID"].ToString() != "")
+                {
+                    GroupID = Int32.Parse((Session["CalGroupID"]).ToString());
+                }
+                else
+                {
+                    GroupID = 0;
+                }
+
+            }
+            else
+            {
+                GroupID = 0;
+            }
+
+
             UserNamePageLbl.Text = UserName;
             string startDate = Calendar1.TodaysDate.ToShortDateString();
             string endDate = Calendar1.TodaysDate.AddDays(7).ToShortDateString();
@@ -41,82 +61,91 @@ namespace TheGameBox
 
             OldEventsDateLbl.Text = startDate;
 
-            SqlConnection db = new SqlConnection(SqlDataSource1.ConnectionString);
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = System.Data.CommandType.Text;
-            cmd.Connection = db;
-            cmd.CommandText = "Select * FROM [Calendar] WHERE (Calendar_EventDate BETWEEN '" + startDate + "' AND '" + endDate + "') AND Calendar_UserID = " + UserID + " ORDER BY Calendar_EventDate";
-
-
-            db.Open();
-
-            try
+            if (GroupID == 0)
             {
-                SqlDataReader sdr = cmd.ExecuteReader();
+                AgendaBox.Text = "No Group Slected";
+            }
 
-                AgendaBox.Text = "";
-                while (sdr.Read())
+            else
+            {
+                SqlConnection db = new SqlConnection(SqlDataSource3.ConnectionString);
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection = db;
+                cmd.CommandText = "Select * FROM [GroupCalendar] WHERE (GroupCalendar_EventDate BETWEEN '" + startDate + "' AND '" + endDate + "') AND GroupCalendar_GroupID = " + GroupID + " ORDER BY GroupCalendar_EventDate";
+
+
+                db.Open();
+
+                try
                 {
-                    AgendaBox.Text += sdr["Calendar_EventName"].ToString() + "\n";
-                    AgendaBox.Text += "Event Date: ";
+                    SqlDataReader sdr2 = cmd.ExecuteReader();
 
-                    DateTime dt = Convert.ToDateTime(sdr["Calendar_EventDate"].ToString());
+                    AgendaBox.Text = "";
+                    while (sdr2.Read())
+                    {
+                        AgendaBox.Text += sdr2["GroupCalendar_EventName"].ToString() + "\n";
+                        AgendaBox.Text += "Event Date: ";
 
-                    AgendaBox.Text += dt.ToShortDateString() + "\n";
+                        DateTime dt = Convert.ToDateTime(sdr2["GroupCalendar_EventDate"].ToString());
 
-                    AgendaBox.Text += "Summary: ";
-                    AgendaBox.Text += sdr["Calendar_EventSummary"].ToString() + "\n";
-                    AgendaBox.Text += "Start: ";
-                    AgendaBox.Text += sdr["Calendar_TimeStart"].ToString() + " ";
-                    AgendaBox.Text += "End: ";
-                    AgendaBox.Text += sdr["Calendar_TimeEnd"].ToString() + "\n";
-                    AgendaBox.Text += "\n";
+                        AgendaBox.Text += dt.ToShortDateString() + "\n";
 
+                        AgendaBox.Text += "Summary: ";
+                        AgendaBox.Text += sdr2["GroupCalendar_EventSummary"].ToString() + "\n";
+                        AgendaBox.Text += "Start: ";
+                        AgendaBox.Text += sdr2["GroupCalendar_TimeStart"].ToString() + " ";
+                        AgendaBox.Text += "End: ";
+                        AgendaBox.Text += sdr2["GroupCalendar_TimeEnd"].ToString() + "\n";
+                        AgendaBox.Text += "\n";
+
+                    }
+                    if (AgendaBox.Text == "")
+                    {
+                        AgendaBox.Text = "NO EVENTS FOR SELECTED GROUP";
+                    }
                 }
-                if (AgendaBox.Text == "")
+                catch
                 {
-                    AgendaBox.Text = "NO EVENTS";
+                    AgendaBox.Text = "An error occured displaying!";
+                    AgendaBox.Visible = true;
                 }
-            }
-            catch
-            {
-                AgendaBox.Text = "An error occured displaying!";
-                AgendaBox.Visible = true;
-            }
-            finally
-            {
-                db.Close();
-            }
-
-
-
-            /*Mark off dates with Events*/
-            cmd.CommandText = "Select * FROM [Calendar] WHERE Calendar_UserID = " + UserID + " ORDER BY Calendar_EventDate";
-
-
-            db.Open();
-
-            try
-            {
-                SqlDataReader sdr = cmd.ExecuteReader();
-
-                while (sdr.Read())
+                finally
                 {
-
-                    DateTime dt2 = Convert.ToDateTime(sdr["Calendar_EventDate"].ToString());
-                    listOfDates[numberOfEvents] = dt2;
-                    numberOfEvents = numberOfEvents + 1;
-
+                    db.Close();
                 }
-            }
-            catch
-            {
-                AgendaBox.Text = "An error occured displaying!";
-                AgendaBox.Visible = true;
-            }
-            finally
-            {
-                db.Close();
+
+
+
+                /*Mark off dates with Events*/
+                cmd.CommandText = "Select * FROM [GroupCalendar] WHERE GroupCalendar_GroupID = " + GroupID + " ORDER BY GroupCalendar_EventDate";
+
+                /*
+                db.Open();
+
+                try
+                {
+                    SqlDataReader sdr = cmd.ExecuteReader();
+
+                    while (sdr.Read())
+                    {
+
+                        DateTime dt2 = Convert.ToDateTime(sdr["GroupCalendar_EventDate"].ToString());
+                        listOfDates[numberOfEvents] = dt2;
+                        numberOfEvents = numberOfEvents + 1;
+
+                    }
+                }
+                catch
+                {
+                    AgendaBox.Text = "An error occured displaying!";
+                    AgendaBox.Visible = true;
+                }
+                finally
+                {
+                    db.Close();
+                }
+                */
             }
 
         }
@@ -255,7 +284,7 @@ namespace TheGameBox
                 RemoveEventBtn.Visible = true;
                 DeleteOldEventsBtn.Visible = true;
 
-                Response.Redirect("/Calendar.aspx");
+                Response.Redirect("/GroupCalendar.aspx");
             }
             else
             {
@@ -896,7 +925,7 @@ namespace TheGameBox
             RemoveEventBtn.Visible = true;
             DeleteOldEventsBtn.Visible = true;
 
-            Response.Redirect("/calendar.aspx");
+            Response.Redirect("/GroupCalendar.aspx");
         }
 
         protected void RemoveEventDrpDwn_SelectedIndexChanged(object sender, EventArgs e)
@@ -1024,7 +1053,7 @@ namespace TheGameBox
             RemoveEventBtn.Visible = true;
             DeleteOldEventsBtn.Visible = true;
 
-            Response.Redirect("/calendar.aspx");
+            Response.Redirect("/GroupCalendar.aspx");
         }
 
         protected void DeleteOldEventCancelBtn_Click(object sender, EventArgs e)
@@ -1039,5 +1068,12 @@ namespace TheGameBox
 
             DeleteOldEventsPanel.Visible = false;
         }
+
+        protected void GroupCalendarSearch_Click(object sender, EventArgs e)
+        {
+            Session["CalGroupID"] = GroupDropDownList.SelectedValue;
+            Response.Redirect("/GroupCalendar.aspx");
+        }
+
     }
 }

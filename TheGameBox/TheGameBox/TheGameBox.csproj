@@ -185,6 +185,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Admin_Control.aspx" />
     <Content Include="Group_Control.aspx" />
+    <Content Include="GroupCalendar.aspx" />
     <Content Include="WebPage.Master" />
     <Content Include="AdminPage.Master" />
   </ItemGroup>
@@ -283,6 +284,13 @@
     </Compile>
     <Compile Include="Group_Control.aspx.designer.cs">
       <DependentUpon>Group_Control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GroupCalendar.aspx.cs">
+      <DependentUpon>GroupCalendar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GroupCalendar.aspx.designer.cs">
+      <DependentUpon>GroupCalendar.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebPage.Master.cs">
       <DependentUpon>WebPage.Master</DependentUpon>

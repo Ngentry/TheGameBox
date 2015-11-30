@@ -16,14 +16,18 @@
                     </asp:Calendar>
                     <asp:Button ID="AddEventBtn" runat="server" Text="Add Event" OnClick="AddEventBtn_Click" />
                     <asp:Button ID="RemoveEventBtn" runat="server" Text="Remove Event" OnClick="RemoveEventBtn_Click" />
-
-                    <asp:Button ID="DeleteOldEventsBtn" runat="server" OnClick="DeleteOldEvents_Click" Text="Remove Old Events" />
+                    <asp:Button ID="DeleteOldEventsBtn" runat="server" OnClick="DeleteOldEvents_Click" Text="Remove Old Events" Width="135px" />
+                    <br />
+                    <asp:DropDownList ID="GroupDropDownList" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource2" DataTextField="Group_Name" DataValueField="Group_Id">
+                        <asp:ListItem Text="Select Group" Value="" />  
+                    </asp:DropDownList>
+                    <asp:Button ID="GroupCalendarSearch" runat="server" Text="List Group Events" Width="148px" OnClick="GroupCalendarSearch_Click" />
 
                 </td>
 
                 <td>
                     <h2>Agenda for <asp:Label ID="DateStartLbl" runat="server" Text="Label"></asp:Label> - <asp:Label ID="DateEndLbl" runat="server" Text="Label"></asp:Label></h2>
-                <asp:TextBox ID="AgendaBox" runat="server" TextMode="MultiLine" Height="432px" Width="459px" ForeColor="#1A1F1F"></asp:TextBox></td>
+                <asp:TextBox ID="AgendaBox" runat="server" TextMode="MultiLine" Height="432px" Width="459px" ForeColor="#1A1F1F" ReadOnly="True"></asp:TextBox></td>
             </tr>
 
             <tr>
@@ -339,6 +343,11 @@
                 <td>
                         <br />
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TheGameBoxConnectionString %>" SelectCommand="SELECT * FROM [Calendar] ORDER BY [Calendar_EventDate]"></asp:SqlDataSource>
+                        <br />
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:TheGameBoxConnectionString %>" SelectCommand="SELECT * FROM [Group] ORDER BY [Group_Name]"></asp:SqlDataSource>
+                        <br />
+                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:TheGameBoxConnectionString %>" SelectCommand="SELECT * FROM [GroupCalendar]"></asp:SqlDataSource>
+                        <br />
                         </td>
             </tr>
 
