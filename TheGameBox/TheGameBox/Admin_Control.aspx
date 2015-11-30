@@ -6,7 +6,7 @@
         BorderWidth="1px" CellPadding="3" DataKeyNames="Admin_AdminID" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="Vertical" ShowFooter="True">
         <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
-            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" CausesValidation="False" />
+            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
             <asp:TemplateField HeaderText="Admin_AdminID" InsertVisible="False" SortExpression="Admin_AdminID">
                 <EditItemTemplate>
                     <asp:Label ID="Label1" runat="server" Text='<%# Eval("Admin_AdminID") %>'></asp:Label>

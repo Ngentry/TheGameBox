@@ -5,7 +5,7 @@
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" DataKeyNames="Group_Id" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="Vertical" ShowFooter="True">
         <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
-            <asp:CommandField CausesValidation="False" ShowDeleteButton="True" ShowEditButton="True" />
+            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
             <asp:TemplateField HeaderText="Group_Id" InsertVisible="False" SortExpression="Group_Id">
                 <EditItemTemplate>
                     <asp:Label ID="Label1" runat="server" Text='<%# Eval("Group_Id") %>'></asp:Label>

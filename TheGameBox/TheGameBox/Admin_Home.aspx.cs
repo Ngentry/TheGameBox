@@ -30,7 +30,6 @@ namespace TheGameBox
                 UserID = 1;
             }
             Label1.Text = "<h1>" + UserName +", Welcome Home!</h1>";
-            form1.DataBind();
         }
 
         protected void btnUpdateImage_Click(object sender, EventArgs e)
