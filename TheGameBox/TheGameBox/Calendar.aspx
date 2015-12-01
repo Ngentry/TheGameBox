@@ -338,7 +338,11 @@
 
                 <td>
                         <br />
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TheGameBoxConnectionString %>" SelectCommand="SELECT * FROM [Calendar] ORDER BY [Calendar_EventDate]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TheGameBoxConnectionString %>" SelectCommand="SELECT * FROM [Calendar] WHERE ([Calendar_UserID] = @Calendar_UserID)">
+                            <SelectParameters>
+                                <asp:SessionParameter Name="Calendar_UserID" SessionField="UserID" Type="Int32" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
                         </td>
             </tr>
 

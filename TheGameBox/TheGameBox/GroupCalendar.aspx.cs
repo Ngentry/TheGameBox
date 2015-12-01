@@ -13,12 +13,14 @@ namespace TheGameBox
     {
         protected DateTime[] listOfDates = new DateTime[500];
         protected int numberOfEvents = 0;
+        int GroupID = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             string UserName = "";
             int UserID = 0;
-            int GroupID = 0;
+            
+            string GroupName = "";
 
             if (Session["UserName"] != null || Session["UserID"] != null)
             {
@@ -32,7 +34,6 @@ namespace TheGameBox
             else
             {
                 Response.Redirect("/LoginPage.aspx");
-
             }
 
             if (Session["CalGroupID"] != null)
@@ -68,11 +69,47 @@ namespace TheGameBox
 
             else
             {
+                /*Get Group Name of Slected Group*/
+                SqlConnection db3 = new SqlConnection(SqlDataSource4.ConnectionString);
+                SqlCommand cmd3 = new SqlCommand();
+                cmd3.CommandType = System.Data.CommandType.Text;
+                cmd3.Connection = db3;
+                cmd3.CommandText = "Select * FROM [Group] WHERE Group_ID = " + GroupID;
+
+
+                db3.Open();
+
+                try
+                {
+                    SqlDataReader sdr3 = cmd3.ExecuteReader();
+
+                    GroupName = "";
+                    while (sdr3.Read())
+                    {
+                        GroupName = sdr3["Group_Name"].ToString();
+                    }
+                    if (GroupName == "")
+                    {
+                        GroupName = "GROUP";
+                    }
+                }
+                catch
+                {
+                    AgendaBox.Text = "An error occured displaying!";
+                    AgendaBox.Visible = true;
+                }
+                finally
+                {
+                    db3.Close();
+                }
+
+
+
                 SqlConnection db = new SqlConnection(SqlDataSource3.ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection = db;
-                cmd.CommandText = "Select * FROM [GroupCalendar] WHERE (GroupCalendar_EventDate BETWEEN '" + startDate + "' AND '" + endDate + "') AND GroupCalendar_GroupID = " + GroupID + " ORDER BY GroupCalendar_EventDate";
+                cmd.CommandText = "Select * FROM [GroupCalendar] WHERE GroupCalendar_GroupID = " + GroupID + " ORDER BY GroupCalendar_EventDate";
 
 
                 db.Open();
@@ -84,6 +121,7 @@ namespace TheGameBox
                     AgendaBox.Text = "";
                     while (sdr2.Read())
                     {
+                        AgendaBox.Text += "Group Name: " + GroupName+ "\n";
                         AgendaBox.Text += sdr2["GroupCalendar_EventName"].ToString() + "\n";
                         AgendaBox.Text += "Event Date: ";
 
@@ -102,7 +140,7 @@ namespace TheGameBox
                     }
                     if (AgendaBox.Text == "")
                     {
-                        AgendaBox.Text = "NO EVENTS FOR SELECTED GROUP";
+                        AgendaBox.Text = "NO EVENTS FOR " + GroupName.ToUpper() +"!";
                     }
                 }
                 catch
@@ -120,7 +158,7 @@ namespace TheGameBox
                 /*Mark off dates with Events*/
                 cmd.CommandText = "Select * FROM [GroupCalendar] WHERE GroupCalendar_GroupID = " + GroupID + " ORDER BY GroupCalendar_EventDate";
 
-                /*
+                
                 db.Open();
 
                 try
@@ -145,7 +183,37 @@ namespace TheGameBox
                 {
                     db.Close();
                 }
-                */
+
+
+                /*Activate Calendar Edit for Group Creator*/
+                SqlConnection db4 = new SqlConnection(SqlDataSource4.ConnectionString);
+                SqlCommand cmd4 = new SqlCommand();
+                cmd4.CommandType = System.Data.CommandType.Text;
+                cmd4.Connection = db4;
+                cmd4.CommandText = "Select * FROM [Group] WHERE Group_ID = "+ GroupID + " AND Group_Creater = " + UserID;
+
+                db4.Open();
+
+                try
+                {
+                    SqlDataReader sdr3 = cmd4.ExecuteReader();
+                    if(sdr3.Read())
+                    {
+                        DeleteOldEventsBtn.Visible = true;
+                        AddEventBtn.Visible = true;
+                        RemoveEventBtn.Visible = true;
+                    }
+                }
+                catch
+                {
+                    AgendaBox.Text = "An error occured displaying!";
+                    AgendaBox.Visible = true;
+                }
+                finally
+                {
+                    db4.Close();
+                }
+                
             }
 
         }
@@ -252,11 +320,11 @@ namespace TheGameBox
 
             if (validTime == true)
             {
-                SqlConnection db = new SqlConnection(SqlDataSource1.ConnectionString);
+                SqlConnection db = new SqlConnection(SqlDataSource3.ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection = db;
-                cmd.CommandText = "INSERT [Calendar] (Calendar_EventDate, Calendar_EventName, Calendar_EventSummary, Calendar_UserID, Calendar_TimeStart, Calendar_TimeEnd) VALUES('" + date + "', '" + eventName + "', '" + description + "', '" + UserID + "', '" + startTime + "', '" + endTime + "' )";
+                cmd.CommandText = "INSERT [GroupCalendar] (GroupCalendar_EventDate, GroupCalendar_EventName, GroupCalendar_EventSummary, GroupCalendar_GroupID, GroupCalendar_TimeStart, GroupCalendar_TimeEnd) VALUES('" + date + "', '" + eventName + "', '" + description + "', '" + GroupID + "', '" + startTime + "', '" + endTime + "' )";
 
                 db.Open();
 
@@ -892,11 +960,11 @@ namespace TheGameBox
 
         protected void FinalRemoveEventBtn_Click(object sender, EventArgs e)
         {
-            SqlConnection db = new SqlConnection(SqlDataSource1.ConnectionString);
+            SqlConnection db = new SqlConnection(SqlDataSource3.ConnectionString);
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.Connection = db;
-            cmd.CommandText = "DELETE FROM [Calendar] WHERE Calendar_EventID = '" + RemoveEventDrpDwn.SelectedValue + "'";
+            cmd.CommandText = "DELETE FROM [GroupCalendar] WHERE GroupCalendar_EventID = '" + RemoveEventDrpDwn.SelectedValue + "'";
 
 
             db.Open();
@@ -930,12 +998,12 @@ namespace TheGameBox
 
         protected void RemoveEventDrpDwn_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SqlConnection db = new SqlConnection(SqlDataSource1.ConnectionString);
+            SqlConnection db = new SqlConnection(SqlDataSource3.ConnectionString);
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.Connection = db;
 
-            cmd.CommandText = "Select * FROM [Calendar] WHERE Calendar_EventID ='" + RemoveEventDrpDwn.Text + "'";
+            cmd.CommandText = "Select * FROM [GroupCalendar] WHERE GroupCalendar_EventID ='" + RemoveEventDrpDwn.Text + "'";
 
 
             db.Open();
@@ -947,19 +1015,19 @@ namespace TheGameBox
                 RemoveInfoTxtBox.Text = "";
                 while (sdr.Read())
                 {
-                    RemoveInfoTxtBox.Text += sdr["Calendar_EventName"].ToString() + "\n";
+                    RemoveInfoTxtBox.Text += sdr["GroupCalendar_EventName"].ToString() + "\n";
                     RemoveInfoTxtBox.Text += "Event Date: ";
 
-                    DateTime dt = Convert.ToDateTime(sdr["Calendar_EventDate"].ToString());
+                    DateTime dt = Convert.ToDateTime(sdr["GroupCalendar_EventDate"].ToString());
 
                     RemoveInfoTxtBox.Text += dt.ToShortDateString() + "\n";
 
                     RemoveInfoTxtBox.Text += "Summary: ";
-                    RemoveInfoTxtBox.Text += sdr["Calendar_EventSummary"].ToString() + "\n";
+                    RemoveInfoTxtBox.Text += sdr["GroupCalendar_EventSummary"].ToString() + "\n";
                     RemoveInfoTxtBox.Text += "Start: ";
-                    RemoveInfoTxtBox.Text += sdr["Calendar_TimeStart"].ToString() + " ";
+                    RemoveInfoTxtBox.Text += sdr["GroupCalendar_TimeStart"].ToString() + " ";
                     RemoveInfoTxtBox.Text += "End: ";
-                    RemoveInfoTxtBox.Text += sdr["Calendar_TimeEnd"].ToString() + "\n";
+                    RemoveInfoTxtBox.Text += sdr["GroupCalendar_TimeEnd"].ToString() + "\n";
                     RemoveInfoTxtBox.Text += "\n";
 
                 }
@@ -1020,11 +1088,11 @@ namespace TheGameBox
         {
             string todaysDate = Calendar1.TodaysDate.ToShortDateString();
             int UserID = (int)Session["UserID"];
-            SqlConnection db = new SqlConnection(SqlDataSource1.ConnectionString);
+            SqlConnection db = new SqlConnection(SqlDataSource3.ConnectionString);
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.Connection = db;
-            cmd.CommandText = "DELETE  FROM [Calendar] WHERE Calendar_UserID = '" + UserID + "' AND Calendar_EventDate < '" + todaysDate + "'";
+            cmd.CommandText = "DELETE  FROM [GroupCalendar] WHERE GroupCalendar_GroupID = '" + GroupID + "' AND GroupCalendar_EventDate < '" + todaysDate + "'";
 
 
             db.Open();
