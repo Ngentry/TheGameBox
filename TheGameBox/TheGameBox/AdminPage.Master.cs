@@ -14,23 +14,27 @@ namespace TheGameBox
         {
             string UserName;
             int UserID;
+            string UserState;
 
-            if (Session["UserName"] != null || Session["UserID"] != null)
+            if ( ((string)Session["UserName"] != "" || (string)Session["UserID"] != "") && (string)Session["UserState"] == "Admin")
             {
+                
                 UserName = (string)(Session["UserName"]);
                 UserID = (int)(Session["UserID"]);
+                UserState = (string)Session["UserState"];
                 string ImagePath = "~/Pictures/Admin/" + UserName + ".jpg";
                 changeImage(ImagePath);
+                Session["UserState"] = "Admin";
                 Session["UserName"] = UserName;
                 Session["UserID"] = UserID;
+                lblWelcome.Text = string.Format("<h3>Admin Control Panel: {0}</h3>", UserName);
             }
             else
             {
-                UserName = "Fancy Pants";
-                UserID = 1;
+                Response.Redirect("/LoginPage.aspx");
             }
 
-            lblWelcome.Text = string.Format("<h3>Admin Control Panel: {0}</h3>", UserName);
+            
 
         }
 

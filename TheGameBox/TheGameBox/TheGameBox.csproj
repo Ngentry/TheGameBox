@@ -318,6 +318,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pictures\Users\" />
+    <Folder Include="Table Scripts\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

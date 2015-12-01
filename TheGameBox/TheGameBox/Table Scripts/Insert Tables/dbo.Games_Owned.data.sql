@@ -1,0 +1,6 @@
+INSERT INTO [dbo].[Games_Owned] ([User_Id], [Game_ID]) VALUES (1, 1)
+INSERT INTO [dbo].[Games_Owned] ([User_Id], [Game_ID]) VALUES (7, 2)
+INSERT INTO [dbo].[Games_Owned] ([User_Id], [Game_ID]) VALUES (7, 5)
+INSERT INTO [dbo].[Games_Owned] ([User_Id], [Game_ID]) VALUES (1, 6)
+INSERT INTO [dbo].[Games_Owned] ([User_Id], [Game_ID]) VALUES (7, 7)
+INSERT INTO [dbo].[Games_Owned] ([User_Id], [Game_ID]) VALUES (7, 10)

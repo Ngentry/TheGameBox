@@ -11,7 +11,21 @@ namespace TheGameBox
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string UserName;
+            int UserID;
 
+            if (((string)Session["UserName"] != "" || (string)Session["UserID"] != ""))
+            {
+
+                UserName = (string)(Session["UserName"]);
+                UserID = (int)(Session["UserID"]);
+                Session["UserName"] = UserName;
+                Session["UserID"] = UserID;
+            }
+            else
+            {
+                Response.Redirect("/LoginPage.aspx");
+            }
         }
     }
 }

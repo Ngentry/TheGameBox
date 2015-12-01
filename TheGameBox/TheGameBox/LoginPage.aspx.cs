@@ -134,6 +134,7 @@ namespace TheGameBox
                     db2.Close();
 
                     Session["UserID"] = Int32.Parse(UserID);
+                    Session["UserState"] = "Admin";
                     Response.Redirect("/Admin_Home.aspx");
                 }
                 else if (count == -1)//error with database has occured

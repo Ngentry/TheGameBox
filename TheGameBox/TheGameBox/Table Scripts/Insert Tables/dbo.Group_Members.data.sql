@@ -1,0 +1,6 @@
+INSERT INTO [dbo].[Group_Members] ([Group_ID], [User_ID], [Group_Admin], [Group_Pending]) VALUES (1, 1, 1, 0)
+INSERT INTO [dbo].[Group_Members] ([Group_ID], [User_ID], [Group_Admin], [Group_Pending]) VALUES (1, 2, 0, 0)
+INSERT INTO [dbo].[Group_Members] ([Group_ID], [User_ID], [Group_Admin], [Group_Pending]) VALUES (3, 1, 0, 0)
+INSERT INTO [dbo].[Group_Members] ([Group_ID], [User_ID], [Group_Admin], [Group_Pending]) VALUES (4, 1, 0, 0)
+INSERT INTO [dbo].[Group_Members] ([Group_ID], [User_ID], [Group_Admin], [Group_Pending]) VALUES (4, 2, 1, 0)
+INSERT INTO [dbo].[Group_Members] ([Group_ID], [User_ID], [Group_Admin], [Group_Pending]) VALUES (4, 4, 1, 0)
