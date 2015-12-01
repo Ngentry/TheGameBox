@@ -186,6 +186,8 @@
     <Content Include="Admin_Control.aspx" />
     <Content Include="Group_Control.aspx" />
     <Content Include="GroupCalendar.aspx" />
+    <Content Include="Games.aspx" />
+    <Content Include="GamesOwned.aspx" />
     <Content Include="WebPage.Master" />
     <Content Include="AdminPage.Master" />
   </ItemGroup>
@@ -291,6 +293,20 @@
     </Compile>
     <Compile Include="GroupCalendar.aspx.designer.cs">
       <DependentUpon>GroupCalendar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Games.aspx.cs">
+      <DependentUpon>Games.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Games.aspx.designer.cs">
+      <DependentUpon>Games.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GamesOwned.aspx.cs">
+      <DependentUpon>GamesOwned.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GamesOwned.aspx.designer.cs">
+      <DependentUpon>GamesOwned.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebPage.Master.cs">
       <DependentUpon>WebPage.Master</DependentUpon>
