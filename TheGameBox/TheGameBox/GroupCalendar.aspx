@@ -5,7 +5,7 @@
             <tr>
                 <td>
                     <h2>Calendar</h2>
-                    <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="Black" BorderStyle="Solid" CellSpacing="1" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="452px" NextPrevFormat="ShortMonth" OnSelectionChanged="Calendar1_SelectionChanged" Width="468px">
+                    <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="Black" BorderStyle="Solid" CellSpacing="1" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="452px" NextPrevFormat="ShortMonth" OnSelectionChanged="Calendar1_SelectionChanged" OnDayRender= "Calendar1_DayRender" Width="468px">
                         <DayHeaderStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" Height="8pt" />
                         <DayStyle BackColor="#CCCCCC" />
                         <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="White" />
@@ -14,9 +14,9 @@
                         <TitleStyle BackColor="#333399" BorderStyle="Solid" Font-Bold="True" Font-Size="12pt" ForeColor="White" Height="12pt" />
                         <TodayDayStyle BackColor="#999999" ForeColor="White" />
                     </asp:Calendar>
-                    <asp:Button ID="AddEventBtn" runat="server" Text="Add Event" OnClick="AddEventBtn_Click" />
-                    <asp:Button ID="RemoveEventBtn" runat="server" Text="Remove Event" OnClick="RemoveEventBtn_Click" />
-                    <asp:Button ID="DeleteOldEventsBtn" runat="server" OnClick="DeleteOldEvents_Click" Text="Remove Old Events" Width="135px" />
+                    <asp:Button ID="AddEventBtn" runat="server" Text="Add Event" OnClick="AddEventBtn_Click" Visible="False" />
+                    <asp:Button ID="RemoveEventBtn" runat="server" Text="Remove Event" OnClick="RemoveEventBtn_Click" Visible="False" />
+                    <asp:Button ID="DeleteOldEventsBtn" runat="server" OnClick="DeleteOldEvents_Click" Text="Remove Old Events" Width="135px" Visible="False" />
                     <br />
                     <asp:DropDownList ID="GroupDropDownList" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource2" DataTextField="Group_Name" DataValueField="Group_Id">
                         <asp:ListItem Text="Select Group" Value="" />  
@@ -283,7 +283,7 @@
                                 <tr>
                                     <td style="width: 194px">Select Event</td>
                                     <td>
-                                        <asp:DropDownList ID="RemoveEventDrpDwn" AutoPostBack="True" runat="server" DataSourceID="SqlDataSource1" DataTextField="Calendar_EventName" DataValueField="Calendar_EventID" OnSelectedIndexChanged="RemoveEventDrpDwn_SelectedIndexChanged"  AppendDataBoundItems="true">
+                                        <asp:DropDownList ID="RemoveEventDrpDwn" AutoPostBack="True" runat="server" DataSourceID="SqlDataSource1" DataTextField="GroupCalendar_EventName" DataValueField="GroupCalendar_EventID" OnSelectedIndexChanged="RemoveEventDrpDwn_SelectedIndexChanged"  AppendDataBoundItems="True">
                                         <asp:ListItem Text="--Select One--" Value="" />  
                                         </asp:DropDownList>
                                     </td>
@@ -342,11 +342,14 @@
 
                 <td>
                         <br />
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TheGameBoxConnectionString %>" SelectCommand="SELECT * FROM [Calendar] ORDER BY [Calendar_EventDate]"></asp:SqlDataSource>
-                        <br />
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TheGameBoxConnectionString %>" SelectCommand="SELECT * FROM [GroupCalendar] WHERE ([GroupCalendar_GroupID] = @GroupCalendar_GroupID)">
+                            <SelectParameters>
+                                <asp:SessionParameter Name="GroupCalendar_GroupID" SessionField="CalGroupID" Type="Int32" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:TheGameBoxConnectionString %>" SelectCommand="SELECT * FROM [Group] ORDER BY [Group_Name]"></asp:SqlDataSource>
-                        <br />
                         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:TheGameBoxConnectionString %>" SelectCommand="SELECT * FROM [GroupCalendar]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:TheGameBoxConnectionString %>" SelectCommand="SELECT * FROM [Group]"></asp:SqlDataSource>
                         <br />
                         </td>
             </tr>

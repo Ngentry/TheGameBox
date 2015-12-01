@@ -16,6 +16,7 @@ namespace TheGameBox
             Session["UserName"] = "";
             Session["UserID"] = "";
             Session["UserState"] = "";
+            Session["CalGroupID"] = "";
             failLbl.Visible = false;
         }
 
