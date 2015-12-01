@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebPage.Master" AutoEventWireup="true" CodeBehind="GamesOwned.aspx.cs" Inherits="TheGameBox.WebForm11" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebPage.Master" AutoEventWireup="true" CodeBehind="GamesOwned.aspx.cs" Inherits="TheGameBox.WebForm13" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Label ID="Label2" runat="server" Text="<h2>Your Game Library</h2>" ></asp:Label>
+     <asp:Label ID="Label2" runat="server" Text="<h2>Your Game Library</h2>" ></asp:Label>
     <asp:Label ID="lblDB" runat="server" Text="Label" Visible="False"></asp:Label>
     <br />
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">

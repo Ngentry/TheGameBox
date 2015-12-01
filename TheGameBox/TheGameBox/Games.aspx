@@ -1,6 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebPage.Master" AutoEventWireup="true" CodeBehind="Games.aspx.cs" Inherits="TheGameBox.WebForm10" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebPage.Master" AutoEventWireup="true" CodeBehind="Games.aspx.cs" Inherits="TheGameBox.WebForm12" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     <h2>Games Available</h2>
     <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" DataSourceID="SqlDataSource1" DataKeyNames="Game_Id" ForeColor="Black" GridLines="Vertical">
         <AlternatingRowStyle BackColor="#CCCCCC" />
@@ -34,7 +33,7 @@
             <asp:Parameter Name="Game_Id" Type="Int32" />
         </UpdateParameters>
         </asp:SqlDataSource>
-
+    <br />
     <asp:Label ID="lblDB" runat="server" Visible="false" Text=""></asp:Label>
     <asp:FormView ID="FormView1" runat="server" DataSourceID="SqlDataSource2" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical" Width="485px">
 

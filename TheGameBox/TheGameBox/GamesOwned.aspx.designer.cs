@@ -10,7 +10,7 @@
 namespace TheGameBox {
     
     
-    public partial class WebForm11 {
+    public partial class WebForm13 {
         
         /// <summary>
         /// Label2 control.

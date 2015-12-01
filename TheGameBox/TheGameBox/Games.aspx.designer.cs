@@ -10,7 +10,7 @@
 namespace TheGameBox {
     
     
-    public partial class WebForm10 {
+    public partial class WebForm12 {
         
         /// <summary>
         /// GridView1 control.

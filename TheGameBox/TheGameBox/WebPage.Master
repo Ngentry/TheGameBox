@@ -92,11 +92,11 @@
                   <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-desktop"></i>
-                          <span>Databases</span>
+                          <span>Games</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="#">Look for Groups</a></li>
-                          <li><a  href="#">Look For Games</a></li>
+                          <li><a  href="Games.aspx">Lookup Games</a></li>
+                          <li><a  href="GamesOwned.aspx">View Your Library</a></li>
                       </ul>
                   </li>
 
