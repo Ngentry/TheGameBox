@@ -16,7 +16,7 @@ namespace TheGameBox
             string UserName;
             int UserID;
 
-            if (Session["UserName"] != null || Session["UserID"] != null)
+            if ((string)Session["UserName"] != "" || (string)Session["UserID"] != "")
             {
                 UserName = (string)(Session["UserName"]);
                 UserID = (int)(Session["UserID"]);
